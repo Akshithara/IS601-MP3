@@ -9,10 +9,10 @@ def search():
     rows = []
     # DO NOT DELETE PROVIDED COMMENTS
     # TODO search-1 retrieve employee id as id, first_name, last_name, email, company_id, company_name using a LEFT JOIN
-    query = """SELECT e.id, e.first_name, e.last_name, e.email, e.company_id, c.name
+    query = """SELECT e.id, e.first_name, e.last_name, e.email, e.company_id, IF(name is not null, name, 'N/A') as company_name
      FROM IS601_MP3_Employees e LEFT JOIN IS601_MP3_Companies c ON e.company_id = c.id WHERE 1=1"""
     args = {} # <--- add values to replace %s/%(named)s placeholders
-    allowed_columns = [("first_name", "First Name"), ("last_name", "Last Name"), ("email", "Email"), ("company_id", "Company Id"), ("name", "Company Name")]
+    allowed_columns = [("id","Id"),("first_name", "First Name"), ("last_name", "Last Name"), ("email", "Email"), ("company_id", "Company Id"), ("company_name", "Company Name")]
 
     # TODO search-2 get fn, ln, email, company, column, order, limit from request args
     fn = request.args.get('fn')
@@ -43,8 +43,9 @@ def search():
         query += " AND e.company_id = %(company)s"
         args["company"] = company
 
+    print(column, order)
     # TODO search-7 append sorting if column and order are provided and within the allowed columns and order options (asc, desc)
-    if column and order and column in [x[0] for x in allowed_columns] and order in ["asc", "desc"]:
+    if column and order and column in ['first_name', 'last_name', 'email', 'company_name'] and order in ["asc", "desc"]:
         query += f" ORDER BY {column} {order.upper()}"
 
     # TODO search-8 append limit (default 10) or limit greater than 1 and less than or equal to 100

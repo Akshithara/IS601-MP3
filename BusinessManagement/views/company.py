@@ -19,7 +19,7 @@ def search():
     
     args = {}
     
-    allowed_columns = [("name", "Name"), ("address", "Address"), ("city", "City"), ("country", "Country"), ("state", "State"), ("zip", "Zip"), ("Website", "Website"), ("employees","Employees")]
+    allowed_columns = [("id", "Id"), ("name", "Name"), ("address", "Address"), ("city", "City"), ("country", "Country"), ("state", "State"), ("zip", "Zip"), ("website", "Website"), ("employees","Employees")]
     
     # TODO search-2 get name, country, state, column, order, limit request args
     name = request.args.get("name")

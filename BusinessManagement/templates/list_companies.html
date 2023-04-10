@@ -62,7 +62,7 @@
                     {% for col in allowed_columns %}
                     {% if col[0] == 'website' %}
                     <td>
-                        <a href="{{ row[col[0]] }}">website</a>
+                        <a href="{{ row['website'] }}">website</a>
                     </td>
                     {% else %}
                     <td>{{ row[col[0]] }}</td>
