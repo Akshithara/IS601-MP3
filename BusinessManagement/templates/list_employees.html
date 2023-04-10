@@ -19,10 +19,22 @@
 
         <div class="row">
             <div class="col">
+                <input id="fn" class="form-control" placeholder="fn" name="fn" type="text" value="">
+            </div>
+            <div class="col">
+                <input id="ln" class="form-control" placeholder="ln" name="ln" type="text" value="">
+            </div>             
+            <div class="col">
+                <input id="email" class="form-control" placeholder="email" name="email" type="text" value="">
+            </div>
+            <div class="col">
                 <label class="visually-hidden" for="company">Company</label>
                 {{company_dropdown(request.args.get("company"))}}
             </div>
-            {{sort_filter(cols=[...])}}
+            {{sort_filter(cols=[("first_name","first_name"),("last_name","last_name"),("email","email"),("company_name","company_name")])}}
+            <div class="col">
+                <input id="limit" class="form-control" placeholder="limit" name="limit" type="int" value="10">
+            </div>
             <div class="col">
                 <input type="submit" class="btn btn-primary" value="Filter" />
             </div>
@@ -34,28 +46,33 @@
     <table class="table">
         {% if rows and rows|length > 0 %}
         <thead>
-            <tr class="text-capitalize">
-                {# generate th tags for each column to display #}
-                {# IMPORTANT use table column names as the headings, replace _ with space via filter #}
-
-                <th>Actions</th>
-            </tr>
+          <tr class="text-capitalize">
+            {% for col in allowed_columns %}
+            <th>{{ col[1] }}</th>
+            {% endfor %}
+            <th>Actions</th>
+          </tr>
         </thead>
         <tbody>
-            {# generate tr with td tags for each piece of data #}
-            {# in the last column add the following
-            an edit button that passes the employee id to employee edit
-            a delete button that passes the employee id and the request args to the employee delete route
-            #}
-
+          {% for row in rows %}
+          <tr>
+            {% for col in allowed_columns %}
+            <td>{{ row[col[0]] }}</td>
+            {% endfor %}
+            <td>
+              <a href="/employee/edit?id={{ row['id'] }}">Edit</a>
+              <a href="/employee/delete?id={{ row['id'] }}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
         </tbody>
         {% else %}
         <tbody>
-            <tr>
-                <td colspan="100%">No results to show</td>
-            </tr>
+          <tr>
+            <td colspan="100%">No results to show</td>
+          </tr>
         </tbody>
         {% endif %}
-    </table>
+      </table>
 </div>
 {% endblock %}
