@@ -267,6 +267,12 @@
 </td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Issues / Learnings / Interesting things to note</td></tr>
-<tr><td> <em>Response:</em> <p>This course helped me a lot to do<br></p><br></td></tr>
+<tr><td> <em>Response:</em> <p>During this assignment, I learned a lot about designing a web application from scratch. I found that the process of connecting to a database using Python can be a bit tricky, I was not familiar with SQL and database management.
+
+One issue I faced was that after connecting to the database, I wasn't able to see any tables. It took me some time to realize that I had forgotten to run the initdb.py script, which creates the necessary tables in the database.
+
+Another noteworthy aspect of this assignment was deploying the application to Heroku using GitHub. This was a new experience for me, and I found it to be interesting to deploy web applications. I also learned about the importance of setting up environment variables and secrets to keep sensitive information like passwords and API keys secure.
+
+Overall, this assignment gave me valuable experience in building a web application from scratch, including designing the front end and back end, connecting to a database, and deploying the application to a cloud platform. I am confident in my ability to build and deploy web applications, and I look forward to applying these skills to future projects.<br></p><br></td></tr>
 </table></td></tr>
 <table><tr><td><em>Grading Link: </em><a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IS601-004-S23/is601-mini-project-3-business-management/grade/aa3382" target="_blank">Grading</a></td></tr></table>
