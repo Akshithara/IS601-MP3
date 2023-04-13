@@ -1,8 +1,9 @@
-FROM python:2.7.7
+FROM python:3.10-slim
 
 # Allow statements and log messages to immediately appear in the Knative logs
 ENV PYTHONUNBUFFERED True
 ENV PORT 8080
+ENV PYTHONUTF8 1
 
 # Copy local code to the container image.
 COPY . /src
