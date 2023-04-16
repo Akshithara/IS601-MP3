@@ -140,7 +140,7 @@ class DB:
                 password = url.password
                 host = url.hostname
                 port = url.port
-                database = url.path.strip("/")
+                database = url.path.strip(b"/")
                 try:
                     DB.db =  pymysql.connect(host=host, user=user, password=password, database=database, port=int(port))
                 except Error as e:
