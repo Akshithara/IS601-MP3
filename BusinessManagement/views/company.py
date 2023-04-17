@@ -75,6 +75,7 @@ def search():
             rows = result.rows
     except Exception as e:
         # TODO search-9 make message user friendly
+        print(str(e))
         flash("An error occurred while searching for Companies.", "danger")
     
     return render_template("list_companies.html", rows=rows, allowed_columns=allowed_columns)
