@@ -140,7 +140,7 @@ class DB:
                 password = url.password
                 host = url.hostname
                 port = url.port
-                database = url.path.strip(b"/")
+                database = url.path.strip("/")
                 print(user,password,host,port,database)
                 try:
                     DB.db =  pymysql.connect(host=host, user=user, password=password, database=database, port=int(port))
