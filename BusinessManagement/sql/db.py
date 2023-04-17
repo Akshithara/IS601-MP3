@@ -141,6 +141,7 @@ class DB:
                 host = url.hostname
                 port = url.port
                 database = url.path.strip(b"/")
+                print(user,password,host,port,database)
                 try:
                     DB.db =  pymysql.connect(host=host, user=user, password=password, database=database, port=int(port))
                 except Error as e:
